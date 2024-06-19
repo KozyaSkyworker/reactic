@@ -4,12 +4,13 @@ import { useTheme } from 'app/contexts/theme';
 import { HomePage } from 'pages/HomePage';
 import { AboutPage } from 'pages/AboutPage';
 import { ContactsPage } from 'pages/ContactsPage';
+import { classNames } from 'helpers/classNames';
 
 const App = () => {
   const { theme, toggleTheme } = useTheme();
 
   return (
-    <div className={`app ${theme}`}>
+    <div className={classNames('app', {}, [theme])}>
       <button onClick={toggleTheme}>toggle theme</button>
       <div>
         <Link to={'/'}>home</Link>
