@@ -20,12 +20,11 @@ export function buildWebpackConfig(options: BuildOptions): webpack.Configuration
         module: {
           rules: buildLoaders(options),
         },
-        resolve: buildResolvers(),
+        resolve: buildResolvers(options),
         plugins: buildPlugins(options),
 
         // зачем собственном в проде это
         devtool: isDev ? 'inline-source-map' : undefined, // inline-source-map чтобы видеть где в каком файле всё сломалось
         devServer: isDev ? buildDevServer(options) : undefined
-        
     }
 }
