@@ -2,7 +2,7 @@
     background-color: var(--inverted-bg-color);
     width: 100%;
     height: var(--navbar-height);
-    border-bottom: 3px solid palegreen;
+    border-bottom: var(--navbar-border-bottom-width) solid var(--primary-color);
 
     padding: 20px;
 
@@ -10,7 +10,7 @@
     align-items: center;
 
     &__logo{
-        color: palegreen;
+        color: var(--primary-color);
         font-size: 20px;
         font-weight: bold;
     }
@@ -18,4 +18,8 @@
     &__links{
         margin-left: auto;
     }
+}
+
+.themeswithcer{
+    margin-left: 10px ;
 }

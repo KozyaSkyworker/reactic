@@ -5,6 +5,10 @@
 
     color: var(--links-color);
 
+    &:hover {
+        color: var(--primary-color);
+    }
+
     & + & {
         margin-left: 10px;
     }

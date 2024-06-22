@@ -10,3 +10,11 @@
 
     min-height: 100vh;
 }
+
+.content-wrapper{
+    display: flex;
+}
+.content{
+    padding: 1rem;
+    flex-grow: 1;
+}

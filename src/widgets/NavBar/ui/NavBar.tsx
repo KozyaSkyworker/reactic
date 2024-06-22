@@ -11,7 +11,7 @@ const NavBar = () => {
         <AppLink to={'/about'}>about</AppLink>
         <AppLink to={'/contacts'}>contacts</AppLink>
       </div>
-      <ThemeSwither />
+      <ThemeSwither externalClass={classes.themeswithcer} />
     </header>
   );
 };
