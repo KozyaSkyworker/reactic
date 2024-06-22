@@ -1,3 +1,4 @@
+import { ThemeSwither } from 'widgets/ThemeSwitcher';
 import classes from './navbar.module.scss';
 import AppLink from 'shared/ui/AppLink/AppLink';
 
@@ -10,6 +11,7 @@ const NavBar = () => {
         <AppLink to={'/about'}>about</AppLink>
         <AppLink to={'/contacts'}>contacts</AppLink>
       </div>
+      <ThemeSwither />
     </header>
   );
 };

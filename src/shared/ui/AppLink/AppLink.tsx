@@ -8,11 +8,13 @@ interface AppLinkProps extends LinkProps {
   children: ReactNode;
 }
 
-const AppLink: FC<AppLinkProps> = ({ children, to }) => {
+const AppLink: FC<AppLinkProps> = (props) => {
+  const { children, to, ...otherLinkProps } = props;
+
   const { theme } = useTheme();
 
   return (
-    <Link className={classNames(classes.link, {}, [theme])} to={to}>
+    <Link className={classNames(classes.link, {}, [theme])} to={to} {...otherLinkProps}>
       {children}
     </Link>
   );

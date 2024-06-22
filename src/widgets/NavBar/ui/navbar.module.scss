@@ -2,19 +2,15 @@
     background-color: var(--inverted-bg-color);
     width: 100%;
     height: var(--navbar-height);
-    border-bottom: 3px solid teal;
+    border-bottom: 3px solid palegreen;
 
     padding: 20px;
 
     display: flex;
     align-items: center;
 
-    &__link + &__link{
-        margin-left: 10px;
-    }
-
     &__logo{
-        color: green;
+        color: palegreen;
         font-size: 20px;
         font-weight: bold;
     }
