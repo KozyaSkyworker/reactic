@@ -11,6 +11,7 @@ export function buildPlugins({paths}: BuildOptions): webpack.WebpackPluginInstan
           filename: 'css/[name].[contenthash:9].css',
           chunkFilename: 'css/[name].[contenthash:9].css',
 
-        })
+        }),
+        new webpack.HotModuleReplacementPlugin()
       ]
 }
