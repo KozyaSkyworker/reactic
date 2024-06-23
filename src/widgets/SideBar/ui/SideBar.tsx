@@ -7,7 +7,7 @@ export const SideBar = () => {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
 
   const sidebarToggle = () => {
-    setSidebarOpen((prev) => !isSidebarOpen);
+    setSidebarOpen((prev) => !prev);
   };
 
   return (

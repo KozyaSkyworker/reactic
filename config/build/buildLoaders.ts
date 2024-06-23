@@ -46,6 +46,7 @@ export function buildLoaders(options: BuildOptions):webpack.RuleSetRule[] {
     }    
 
     return [
+        fileLoader,
         svgLoader,
         tsLoader,
         cssLoader

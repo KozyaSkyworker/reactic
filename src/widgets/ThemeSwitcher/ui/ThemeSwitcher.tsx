@@ -15,7 +15,7 @@ export const ThemeSwither = ({ externalClass }: ThemeSwitcherProps) => {
 
   return (
     <AppButton onClick={toggleTheme} theme={ThemeButton.CLEAR}>
-      <ThemeIcon className={classNames(classes.themeicon, {}, [theme, , externalClass])} />
+      <ThemeIcon className={classNames(classes.themeicon, {}, [theme, externalClass])} />
     </AppButton>
   );
 };
