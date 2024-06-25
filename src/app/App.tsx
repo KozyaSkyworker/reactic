@@ -1,4 +1,4 @@
-import { useTheme } from 'app/contexts/theme';
+import { useTheme } from 'app/providers/theme';
 import { classNames } from 'helpers/classNames';
 import { AppRouter } from 'app/router';
 import { NavBar } from 'widgets/NavBar';

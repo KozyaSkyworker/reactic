@@ -1,4 +1,4 @@
-import { useTheme } from 'app/contexts/theme';
+import { useTheme } from 'app/providers/theme';
 import { classNames } from 'helpers/classNames';
 
 import classes from './themeswithcer.module.scss';
