@@ -12,11 +12,15 @@
       "baseUrl": ".",
       "paths": {
         "*": ["./src/*"]
-      }
+      },
+      "types": ["@testing-library/jest-dom"],
     },
     "ts-node": {
       "compilerOptions": {
         "module": "CommonJS"
       }
-    }
+    },
+    // "include": [
+    //   "./config/jest/setupTests.ts"
+    // ],
 }

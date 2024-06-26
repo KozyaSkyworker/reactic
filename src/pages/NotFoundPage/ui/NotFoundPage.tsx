@@ -1,4 +1,4 @@
-import { classNames } from 'helpers/classNames';
+import { classNames } from 'shared/lib/classNames/classNames';
 import classes from './notfoundpage.module.scss';
 
 export const NotFoundPage = () => {

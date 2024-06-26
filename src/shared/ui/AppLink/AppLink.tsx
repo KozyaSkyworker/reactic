@@ -1,7 +1,7 @@
 import { Link, LinkProps } from 'react-router-dom';
 import classes from './applink.module.scss';
 import { FC, ReactNode } from 'react';
-import { classNames } from 'helpers/classNames';
+import { classNames } from 'shared/lib/classNames/classNames';
 
 interface AppLinkProps extends LinkProps {
   children: ReactNode;

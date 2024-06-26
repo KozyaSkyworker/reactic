@@ -1,4 +1,4 @@
-import { classNames } from 'helpers/classNames';
+import { classNames } from 'shared/lib/classNames/classNames';
 
 import classes from './sidebar.module.scss';
 import { useState } from 'react';
@@ -11,9 +11,13 @@ export const SideBar = () => {
   };
 
   return (
-    <aside className={classNames(classes.sidebar, { [classes.sidebar_open]: isSidebarOpen }, [])}>
+    <aside
+      data-testid="sidebar"
+      className={classNames(classes.sidebar, { [classes.sidebar_open]: isSidebarOpen }, [])}>
       <h2>sidebar</h2>
-      <button onClick={sidebarToggle}>open/close</button>
+      <button data-testid="sidebar-toggle" onClick={sidebarToggle}>
+        open/close
+      </button>
     </aside>
   );
 };

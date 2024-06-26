@@ -1,5 +1,5 @@
 import { useTheme } from 'app/providers/theme';
-import { classNames } from 'helpers/classNames';
+import { classNames } from 'shared/lib/classNames/classNames';
 import { AppRouter } from 'app/router';
 import { NavBar } from 'widgets/NavBar';
 import { SideBar } from 'widgets/SideBar';
