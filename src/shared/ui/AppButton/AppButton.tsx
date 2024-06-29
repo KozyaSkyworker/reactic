@@ -4,6 +4,7 @@ import classes from './appbutton.module.scss';
 
 export enum ThemeButton {
   CLEAR = 'clear',
+  OUTLINE = 'outline',
 }
 
 interface AppButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {

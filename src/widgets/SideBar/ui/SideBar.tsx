@@ -14,7 +14,7 @@ export const SideBar = () => {
     <aside
       data-testid="sidebar"
       className={classNames(classes.sidebar, { [classes.sidebar_open]: isSidebarOpen }, [])}>
-      <h2>sidebar</h2>
+      <h2>SideBar</h2>
       <button data-testid="sidebar-toggle" onClick={sidebarToggle}>
         open/close
       </button>

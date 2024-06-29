@@ -8,4 +8,12 @@
     border: none;
     background: none;
     outline: none;
+    color: var(--primary-color);
+}
+
+.outline{
+    border: 2px solid var(--primary-color);
+    padding: .5rem;
+    background: transparent;
+    color: var(--primary-color);
 }
