@@ -54,3 +54,24 @@ export const OutlineDark: Story = {
     ),
   ],
 };
+
+export const Rounded: Story = {
+  args: {
+    children: 'AppButton text',
+    theme: ThemeButton.ROUNDED,
+  },
+};
+
+export const RoundedDark: Story = {
+  args: {
+    children: 'AppButton text',
+    theme: ThemeButton.ROUNDED,
+  },
+  decorators: [
+    (Story) => (
+      <div className={`app ${Theme.DARK}`}>
+        <Story />
+      </div>
+    ),
+  ],
+};

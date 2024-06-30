@@ -2,16 +2,55 @@
     width: var(--sidebar-width-close);
     height: calc(100vh - var(--navbar-height) );
     
+    text-align: center;
+
     position: relative;
 
     background: var(--inverted-bg-color);
     color: var(--inverted-text-color);
 
-    padding: .5rem;
+    padding: 1rem .4rem;
 
     transition: width .3s ease;
 
     &_open{
         width: var(--sidebar-width-open);
+    }
+
+    &__item{
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        
+        color: white;
+
+        &:hover{
+            color: var(--primary-color)
+        }
+
+        &:hover svg{
+            fill: var(--primary-color)
+        }
+    }
+
+    &__btn{
+        position: absolute;
+        top: 15%;
+        right: 0;
+        transform: translateX(50%);
+        padding: .4rem .6rem;
+        font-size: 16px;
+        font-weight: bold;
+        transition: background .3s ease;
+
+        &:hover{
+            background-color: teal;
+        }
+    }
+
+    &__icon{
+        fill: var(--icon-fill);
+        width: var(--icon-width);
+        height: var(--icon-height);
     }
 }

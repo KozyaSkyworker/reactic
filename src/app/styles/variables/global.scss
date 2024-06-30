@@ -7,4 +7,15 @@
 
     --sidebar-width-close: 100px;
     --sidebar-width-open: 300px;
+
+    --icon-fill: white;
+    --icon-width: 30px;
+    --icon-height: 30px;
+
+}
+
+h1{
+    width: max-content;
+    padding: 0 .3rem;
+    border-bottom: 2px dashed var(--primary-color);
 }
