@@ -16,11 +16,11 @@ jobs:
       - name: install dependencies
         run: npm install
 
+      - name: building production
+        run: npm run build:prod
+
       - name: linting
         run: npm run lint
 
       - name: testing unit
         run: npm run test:unit
-
-      - name: building production
-        run: npm run build:prod
