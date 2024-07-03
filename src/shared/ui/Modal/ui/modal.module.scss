@@ -1,0 +1,33 @@
+.modal{
+    position: fixed;
+
+    opacity: 0;
+    pointer-events: none;
+    z-index: -1;
+
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+
+    background-color: var(--bg-overlay);
+    z-index: 99;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &_open{
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    &__content{
+        width: 55%;
+        height: 450px;
+        color: var(--text-color);
+        background-color: var(--bg-color);
+        border-radius: 10px;
+        padding: 1rem;
+    }
+}
