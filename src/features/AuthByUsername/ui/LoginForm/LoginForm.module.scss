@@ -1,0 +1,15 @@
+.loginform{
+
+    &__content{
+        display: flex;
+        flex-direction: column;
+    }
+    &__inpt {
+        margin-top: 1rem;
+    }
+    &__btn{
+        margin-top: 1rem;
+        width: max-content;
+        margin-left: auto;
+    }
+}

@@ -5,16 +5,20 @@ import { useCallback, useState } from 'react';
 import AppButton, { ThemeButton } from 'shared/ui/AppButton/AppButton';
 
 import UserIcon from 'shared/assets/icons/UserIcon.svg';
-import { Modal } from 'shared/ui/Modal';
 import { Portal } from 'shared/Portal';
+import { LoginModal } from 'features/AuthByUsername';
 
 export const SideBar = () => {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const onToggleModal = useCallback(() => {
+  const onCloseModal = useCallback(() => {
     setIsModalOpen(false);
+  }, []);
+
+  const onShowModal = useCallback(() => {
+    setIsModalOpen(true);
   }, []);
 
   const sidebarToggle = () => {
@@ -25,7 +29,7 @@ export const SideBar = () => {
     <aside
       data-testid="sidebar"
       className={classNames(classes.sidebar, { [classes.sidebar_open]: isSidebarOpen }, [])}>
-      <div className={classNames(classes.sidebar__item)} onClick={() => setIsModalOpen(true)}>
+      <div className={classNames(classes.sidebar__item)} onClick={onShowModal}>
         <UserIcon className={classNames(classes.sidebar__icon)} />
         {isSidebarOpen && <span>Войти</span>}
       </div>
@@ -37,9 +41,7 @@ export const SideBar = () => {
         {isSidebarOpen ? '<' : '>'}
       </AppButton>
       <Portal>
-        <Modal isOpen={isModalOpen} onClose={onToggleModal}>
-          <p>3</p>
-        </Modal>
+        <LoginModal isOpen={isModalOpen} onClose={onCloseModal} />
       </Portal>
     </aside>
   );

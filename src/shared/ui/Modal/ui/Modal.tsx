@@ -1,4 +1,4 @@
-import { ReactNode, useCallback, useEffect } from 'react';
+import { ReactNode, useCallback, useEffect, useState } from 'react';
 
 import classes from './modal.module.scss';
 import { classNames } from 'shared/lib/classNames/classNames';
@@ -8,10 +8,13 @@ interface IModal {
   children?: ReactNode;
   isOpen?: boolean;
   onClose?: () => void;
+  isLazy?: boolean;
 }
 
-export const Modal = ({ children, isOpen, onClose }: IModal) => {
+export const Modal = ({ children, isOpen, onClose, isLazy }: IModal) => {
   const { theme } = useTheme();
+
+  const [isMounted, setIsMounted] = useState(false);
 
   const onContentClick = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -35,6 +38,16 @@ export const Modal = ({ children, isOpen, onClose }: IModal) => {
       window.removeEventListener('keydown', keyDownHandler);
     };
   }, [isOpen, keyDownHandler]);
+
+  useEffect(() => {
+    if (isOpen) {
+      setIsMounted(true);
+    }
+  }, [isOpen]);
+
+  if (isLazy && !isMounted) {
+    return null;
+  }
 
   return (
     <div
