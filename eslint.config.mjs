@@ -6,13 +6,13 @@ import { fixupConfigRules } from '@eslint/compat';
 
 /** @type {import('eslint').Linter.FlatConfig[]} */
 export default [
-  { files: ['**/*.{js,mjs,cjs,ts,jsx,tsx}'] },
+  { files: ['**/*.{js,ts,jsx,tsx}'] },
   { languageOptions: { parserOptions: { ecmaFeatures: { jsx: true } } } },
   {
     languageOptions: { globals: globals.browser },
   },
   {
-    ignores: ['node_modules', 'build', 'storybook-static'],
+    ignores: ['node_modules', 'build', 'storybook-static', 'json-server'],
   },
   {
     settings: {
