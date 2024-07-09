@@ -1,4 +1,4 @@
-import React, { InputHTMLAttributes, useEffect, useRef } from 'react';
+import React, { InputHTMLAttributes, memo, useEffect, useRef } from 'react';
 import classes from './AppInput.module.scss';
 import { classNames } from 'shared/lib/classNames/classNames';
 
@@ -10,36 +10,38 @@ interface AppInputProps extends HTMLInput {
   foreignClasses?: string;
 }
 
-const AppInput = ({
-  value,
-  onChange,
-  type = 'text',
-  foreignClasses = '',
-  autoFocus,
-  ...otherProps
-}: AppInputProps) => {
-  const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    onChange?.(e.target.value);
-  };
+const AppInput = memo(
+  ({
+    value,
+    onChange,
+    type = 'text',
+    foreignClasses = '',
+    autoFocus,
+    ...otherProps
+  }: AppInputProps) => {
+    const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+      onChange?.(e.target.value);
+    };
 
-  const inputRef = useRef<HTMLInputElement>(null);
+    const inputRef = useRef<HTMLInputElement>(null);
 
-  useEffect(() => {
-    if (autoFocus) {
-      inputRef.current?.focus();
-    }
-  }, []);
+    useEffect(() => {
+      if (autoFocus) {
+        inputRef.current?.focus();
+      }
+    }, []);
 
-  return (
-    <input
-      ref={inputRef}
-      className={classNames(classes.inpt, {}, [foreignClasses])}
-      type={type}
-      value={value}
-      onChange={onChangeHandler}
-      {...otherProps}
-    />
-  );
-};
+    return (
+      <input
+        ref={inputRef}
+        className={classNames(classes.inpt, {}, [foreignClasses])}
+        type={type}
+        value={value}
+        onChange={onChangeHandler}
+        {...otherProps}
+      />
+    );
+  },
+);
 
 export default AppInput;

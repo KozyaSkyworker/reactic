@@ -75,3 +75,26 @@ export const RoundedDark: Story = {
     ),
   ],
 };
+
+export const Disabled: Story = {
+  args: {
+    children: 'AppButton text',
+    theme: ThemeButton.OUTLINE,
+    disabled: true,
+  },
+};
+
+export const DisabledDark: Story = {
+  args: {
+    children: 'AppButton text',
+    theme: ThemeButton.OUTLINE,
+    disabled: true,
+  },
+  decorators: [
+    (Story) => (
+      <div className={`app ${Theme.DARK}`}>
+        <Story />
+      </div>
+    ),
+  ],
+};

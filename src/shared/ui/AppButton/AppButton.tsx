@@ -15,11 +15,14 @@ interface AppButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const AppButton: FC<AppButtonProps> = (props) => {
-  const { children, theme, foreignClasses = '', ...otherButtonProps } = props;
+  const { children, theme, disabled, foreignClasses = '', ...otherButtonProps } = props;
 
   return (
     <button
-      className={classNames(`${foreignClasses} ${classes.btn}`, {}, [classes[theme]])}
+      className={classNames(`${foreignClasses} ${classes.btn}`, { [classes.disabled]: disabled }, [
+        classes[theme],
+      ])}
+      disabled={disabled}
       {...otherButtonProps}>
       {children}
     </button>
