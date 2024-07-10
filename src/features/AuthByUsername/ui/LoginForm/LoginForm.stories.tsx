@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { LoginForm } from './LoginForm';
+import LoginForm from './LoginForm';
 import { Theme } from 'app/providers/theme';
 import { StoreProvider } from 'app/providers/StoreProvider';
 

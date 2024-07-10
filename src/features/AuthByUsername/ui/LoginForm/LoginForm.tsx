@@ -9,7 +9,7 @@ import { loginActions } from '../../model/slice/loginSlice';
 import { getLoginState } from '../../model/selectors/getLoginState';
 import { loginByUsername } from '../../model/services/loginByUsername/loginByUsername';
 
-export const LoginForm = () => {
+const LoginForm = () => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const dispatch = useDispatch<any>();
   const { username, password, error, isLoading } = useSelector(getLoginState);
@@ -63,3 +63,5 @@ export const LoginForm = () => {
     </div>
   );
 };
+
+export default LoginForm;
