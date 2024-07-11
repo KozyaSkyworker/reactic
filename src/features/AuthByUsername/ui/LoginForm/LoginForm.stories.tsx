@@ -1,7 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import LoginForm from './LoginForm';
 import { Theme } from 'app/providers/theme';
-import { StoreProvider } from 'app/providers/StoreProvider';
+import { StateSchema, StoreProvider } from 'app/providers/StoreProvider';
+import { ReducersMapObject } from '@reduxjs/toolkit';
+import { loginReducer } from 'features/AuthByUsername/model/slice/loginSlice';
+
+const defaultAsyncReducers: Partial<ReducersMapObject<StateSchema>> = {
+  loginForm: loginReducer,
+};
 
 const meta: Meta<typeof LoginForm> = {
   title: 'Features/LoginForm',
@@ -19,7 +25,8 @@ export const Light: Story = {
   decorators: [
     (Story) => (
       <StoreProvider
-        initialState={{ loginForm: { username: 'u', password: 'p', isLoading: false } }}>
+        initialState={{ loginForm: { username: 'u', password: 'p', isLoading: false } }}
+        asyncReducers={defaultAsyncReducers}>
         <Story />
       </StoreProvider>
     ),
@@ -32,7 +39,8 @@ export const Dark: Story = {
     (Story) => (
       <div className={`app ${Theme.DARK}`}>
         <StoreProvider
-          initialState={{ loginForm: { username: 'u', password: 'p', isLoading: false } }}>
+          initialState={{ loginForm: { username: 'u', password: 'p', isLoading: false } }}
+          asyncReducers={defaultAsyncReducers}>
           <Story />
         </StoreProvider>
       </div>
@@ -45,7 +53,8 @@ export const LoadingLight: Story = {
   decorators: [
     (Story) => (
       <StoreProvider
-        initialState={{ loginForm: { username: 'u', password: 'p', isLoading: true } }}>
+        initialState={{ loginForm: { username: 'u', password: 'p', isLoading: true } }}
+        asyncReducers={defaultAsyncReducers}>
         <Story />
       </StoreProvider>
     ),
@@ -58,7 +67,8 @@ export const LoadingDark: Story = {
     (Story) => (
       <div className={`app ${Theme.DARK}`}>
         <StoreProvider
-          initialState={{ loginForm: { username: 'u', password: 'p', isLoading: true } }}>
+          initialState={{ loginForm: { username: 'u', password: 'p', isLoading: true } }}
+          asyncReducers={defaultAsyncReducers}>
           <Story />
         </StoreProvider>
       </div>
@@ -73,7 +83,8 @@ export const ErrorLight: Story = {
       <StoreProvider
         initialState={{
           loginForm: { username: 'u', password: 'p', isLoading: false, error: 'error' },
-        }}>
+        }}
+        asyncReducers={defaultAsyncReducers}>
         <Story />
       </StoreProvider>
     ),
