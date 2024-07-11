@@ -1,3 +1,3 @@
 export const PageError = () => {
-  return <h1>Error!</h1>;
+  return <h1>Произошла Error!</h1>;
 };

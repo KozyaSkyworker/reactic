@@ -7,7 +7,7 @@
     background: var(--inverted-bg-color);
     color: var(--inverted-text-color);
 
-    padding: 1rem .4rem;
+    padding: 1rem .5rem;
 
     transition: width .3s ease;
 
@@ -50,5 +50,9 @@
         fill: var(--icon-fill);
         width: var(--icon-width);
         height: var(--icon-height);
+    }
+
+    &__icon_text{
+        margin-left: .5rem;
     }
 }

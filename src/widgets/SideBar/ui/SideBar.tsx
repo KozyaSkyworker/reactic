@@ -42,12 +42,12 @@ export const SideBar = () => {
       {authData ? (
         <div className={classNames(classes.sidebar__item)} onClick={onLogout}>
           <UserLogout className={classNames(classes.sidebar__icon)} />
-          {isSidebarOpen && <span>Выйти</span>}
+          {isSidebarOpen && <span className={classNames(classes.sidebar__icon_text)}>Выйти</span>}
         </div>
       ) : (
         <div className={classNames(classes.sidebar__item)} onClick={onShowModal}>
           <UserIcon className={classNames(classes.sidebar__icon)} />
-          {isSidebarOpen && <span>Войти</span>}
+          {isSidebarOpen && <span className={classNames(classes.sidebar__icon_text)}>Войти</span>}
         </div>
       )}
 
@@ -58,9 +58,11 @@ export const SideBar = () => {
         theme={ThemeButton.ROUNDED}>
         {isSidebarOpen ? '<' : '>'}
       </AppButton>
-      <Portal>
-        <LoginModal isOpen={isModalOpen} onClose={onCloseModal} />
-      </Portal>
+      {isModalOpen && (
+        <Portal>
+          <LoginModal isOpen={isModalOpen} onClose={onCloseModal} />
+        </Portal>
+      )}
     </aside>
   );
 };

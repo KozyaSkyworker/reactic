@@ -5,14 +5,30 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import AppInput from 'shared/ui/AppInput/AppInput';
 import { useDispatch, useSelector } from 'react-redux';
 import { useCallback } from 'react';
-import { loginActions } from '../../model/slice/loginSlice';
-import { getLoginState } from '../../model/selectors/getLoginState';
+import { loginActions, loginReducer } from '../../model/slice/loginSlice';
 import { loginByUsername } from '../../model/services/loginByUsername/loginByUsername';
+import { getLoginUsername } from '../../model/selectors/getLoginUsername/getLoginUsername';
+import { getLoginPassword } from '../../model/selectors/getLoginPassword/getLoginPassword';
+import { getLoginError } from '../../model/selectors/getLoginError/getLoginError';
+import { getLoginIsLoading } from '../../model/selectors/getLoginIsLoading/getLoginIsLoading';
+import {
+  DynamicModuleLoader,
+  ReducresList,
+} from 'shared/lib/DynamicModuleLoader/DynamicModuleLoader';
+
+const initialReducers: ReducresList = {
+  loginForm: loginReducer,
+};
 
 const LoginForm = () => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const dispatch = useDispatch<any>();
-  const { username, password, error, isLoading } = useSelector(getLoginState);
+
+  // в этих селекторах можно было бы через creatSelector от getLoginState
+  const username = useSelector(getLoginUsername);
+  const password = useSelector(getLoginPassword);
+  const error = useSelector(getLoginError);
+  const isLoading = useSelector(getLoginIsLoading);
 
   const onChangeUsername = useCallback(
     (value: string) => {
@@ -33,34 +49,36 @@ const LoginForm = () => {
   }, [dispatch, password, username]);
 
   return (
-    <div className={classNames(classes.loginform)}>
-      <h3 className={classNames(classes.loginform__title)}>Авторизация</h3>
-      <div className={classNames(classes.loginform__content)}>
-        {error && <p>error!</p>}
-        <AppInput
-          autoFocus={true}
-          placeholder="username"
-          type="text"
-          foreignClasses={classNames(classes.loginform__inpt)}
-          value={username}
-          onChange={onChangeUsername}
-        />
-        <AppInput
-          placeholder="password"
-          type="password"
-          foreignClasses={classNames(classes.loginform__inpt)}
-          value={password}
-          onChange={onChangePassword}
-        />
-        <AppButton
-          foreignClasses={classNames(classes.loginform__btn)}
-          theme={ThemeButton.OUTLINE}
-          onClick={onLoginClick}
-          disabled={isLoading}>
-          Войти
-        </AppButton>
+    <DynamicModuleLoader reducers={initialReducers} removeAfterUnmount={true}>
+      <div className={classNames(classes.loginform)}>
+        <h3 className={classNames(classes.loginform__title)}>Авторизация</h3>
+        <div className={classNames(classes.loginform__content)}>
+          {error && <p>error!</p>}
+          <AppInput
+            autoFocus={true}
+            placeholder="username"
+            type="text"
+            foreignClasses={classNames(classes.loginform__inpt)}
+            value={username}
+            onChange={onChangeUsername}
+          />
+          <AppInput
+            placeholder="password"
+            type="password"
+            foreignClasses={classNames(classes.loginform__inpt)}
+            value={password}
+            onChange={onChangePassword}
+          />
+          <AppButton
+            foreignClasses={classNames(classes.loginform__btn)}
+            theme={ThemeButton.OUTLINE}
+            onClick={onLoginClick}
+            disabled={isLoading}>
+            Войти
+          </AppButton>
+        </div>
       </div>
-    </div>
+    </DynamicModuleLoader>
   );
 };
 
