@@ -58,7 +58,7 @@ export const SideBar = () => {
         theme={ThemeButton.ROUNDED}>
         {isSidebarOpen ? '<' : '>'}
       </AppButton>
-      {isModalOpen && (
+      {!authData && (
         <Portal>
           <LoginModal isOpen={isModalOpen} onClose={onCloseModal} />
         </Portal>
