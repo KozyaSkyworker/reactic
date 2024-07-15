@@ -3,7 +3,7 @@ import AppButton, { ThemeButton } from 'shared/ui/AppButton/AppButton';
 import classes from './LoginForm.module.scss';
 import { classNames } from 'shared/lib/classNames/classNames';
 import AppInput from 'shared/ui/AppInput/AppInput';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useCallback } from 'react';
 import { loginActions, loginReducer } from '../../model/slice/loginSlice';
 import { loginByUsername } from '../../model/services/loginByUsername/loginByUsername';
@@ -15,14 +15,18 @@ import {
   DynamicModuleLoader,
   ReducresList,
 } from 'shared/lib/DynamicModuleLoader/DynamicModuleLoader';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 
 const initialReducers: ReducresList = {
   loginForm: loginReducer,
 };
 
-const LoginForm = () => {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const dispatch = useDispatch<any>();
+interface LoginFormProps {
+  onSuccess: () => void;
+}
+
+const LoginForm = ({ onSuccess }: LoginFormProps) => {
+  const dispatch = useAppDispatch();
 
   // в этих селекторах можно было бы через creatSelector от getLoginState
   const username = useSelector(getLoginUsername);
@@ -44,8 +48,11 @@ const LoginForm = () => {
     [dispatch],
   );
 
-  const onLoginClick = useCallback(() => {
-    dispatch(loginByUsername({ username, password }));
+  const onLoginClick = useCallback(async () => {
+    const result = await dispatch(loginByUsername({ username, password }));
+    if (result.meta.requestStatus === 'fulfilled') {
+      onSuccess();
+    }
   }, [dispatch, password, username]);
 
   return (

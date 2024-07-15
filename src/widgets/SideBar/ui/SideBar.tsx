@@ -4,7 +4,7 @@ import classes from './sidebar.module.scss';
 import { useCallback, useState } from 'react';
 import AppButton, { ThemeButton } from 'shared/ui/AppButton/AppButton';
 
-import UserIcon from 'shared/assets/icons/UserIcon.svg';
+import UserEnter from 'shared/assets/icons/UserEnter.svg';
 import UserLogout from 'shared/assets/icons/UserLogout.svg';
 import { Portal } from 'shared/Portal';
 import { LoginModal } from 'features/AuthByUsername';
@@ -41,12 +41,12 @@ export const SideBar = () => {
       className={classNames(classes.sidebar, { [classes.sidebar_open]: isSidebarOpen }, [])}>
       {authData ? (
         <div className={classNames(classes.sidebar__item)} onClick={onLogout}>
-          <UserLogout className={classNames(classes.sidebar__icon)} />
+          <UserLogout height={30} width={30} className={classNames(classes.sidebar__icon)} />
           {isSidebarOpen && <span className={classNames(classes.sidebar__icon_text)}>Выйти</span>}
         </div>
       ) : (
         <div className={classNames(classes.sidebar__item)} onClick={onShowModal}>
-          <UserIcon className={classNames(classes.sidebar__icon)} />
+          <UserEnter height={30} width={30} className={classNames(classes.sidebar__icon)} />
           {isSidebarOpen && <span className={classNames(classes.sidebar__icon_text)}>Войти</span>}
         </div>
       )}
