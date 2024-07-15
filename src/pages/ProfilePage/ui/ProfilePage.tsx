@@ -1,8 +1,20 @@
+import { profileReducer } from 'entities/Profile';
+import {
+  DynamicModuleLoader,
+  ReducresList,
+} from 'shared/lib/DynamicModuleLoader/DynamicModuleLoader';
+
+const reducers: ReducresList = {
+  profile: profileReducer,
+};
+
 const ProfilePage = () => {
   return (
-    <div className="profilepage">
-      <h1>Profile Page : username</h1>
-    </div>
+    <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
+      <div className="profilepage">
+        <h1>Profile Page : username</h1>
+      </div>
+    </DynamicModuleLoader>
   );
 };
 

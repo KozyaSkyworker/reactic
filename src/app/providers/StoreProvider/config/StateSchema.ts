@@ -1,11 +1,13 @@
 import { Action, EnhancedStore, Reducer, ReducersMapObject } from "@reduxjs/toolkit";
 import { ICounterSchema } from "entities/Counter";
+import { ProfileSchema } from "entities/Profile";
 import { UserSchema } from "entities/User";
 import { LoginSchema } from "features/AuthByUsername";
 
 export interface StateSchema {
     counter: ICounterSchema,
     user: UserSchema,
+    profile?: ProfileSchema,
     loginForm?: LoginSchema
 }
 

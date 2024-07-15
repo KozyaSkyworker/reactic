@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import ProfilePage from './ProfilePage';
 import { Theme } from 'app/providers/theme';
+import { StoreProvider } from 'app/providers/StoreProvider';
 
 const meta: Meta<typeof ProfilePage> = {
   title: 'Pages/Profile',
@@ -15,7 +16,13 @@ type Story = StoryObj<typeof ProfilePage>;
 
 export const Light: Story = {
   args: {},
-  decorators: [(Story) => <Story />],
+  decorators: [
+    (Story) => (
+      <StoreProvider initialState={{ profile: { isLoading: false, readonly: true } }}>
+        <Story />
+      </StoreProvider>
+    ),
+  ],
 };
 
 export const Dark: Story = {
@@ -23,7 +30,9 @@ export const Dark: Story = {
   decorators: [
     (Story) => (
       <div className={`app ${Theme.DARK}`}>
-        <Story />
+        <StoreProvider initialState={{ profile: { isLoading: false, readonly: true } }}>
+          <Story />
+        </StoreProvider>
       </div>
     ),
   ],
