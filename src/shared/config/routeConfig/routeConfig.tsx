@@ -1,5 +1,4 @@
 import { AboutPage } from 'pages/AboutPage';
-import { ContactsPage } from 'pages/ContactsPage';
 import { HomePage } from 'pages/HomePage';
 import { NotFoundPage } from 'pages/NotFoundPage';
 import { ProfilePage } from 'pages/ProfilePage';
