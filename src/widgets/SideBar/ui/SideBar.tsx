@@ -1,7 +1,7 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 
 import classes from './sidebar.module.scss';
-import { useCallback, useState } from 'react';
+import { memo, useCallback, useState } from 'react';
 import AppButton, { ThemeButton } from 'shared/ui/AppButton/AppButton';
 
 import UserEnter from 'shared/assets/icons/UserEnter.svg';
@@ -11,7 +11,7 @@ import { LoginModal } from 'features/AuthByUsername';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUserAuthData, userActions } from 'entities/User';
 
-export const SideBar = () => {
+export const SideBar = memo(() => {
   const dispatch = useDispatch();
   const authData = useSelector(getUserAuthData);
 
@@ -65,4 +65,4 @@ export const SideBar = () => {
       )}
     </aside>
   );
-};
+});

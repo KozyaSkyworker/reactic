@@ -29,7 +29,7 @@ const AppInput = memo(
       if (autoFocus) {
         inputRef.current?.focus();
       }
-    }, []);
+    }, [autoFocus]);
 
     return (
       <input

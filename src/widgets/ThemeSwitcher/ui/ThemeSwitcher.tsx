@@ -19,5 +19,3 @@ export const ThemeSwither = ({ externalClass }: ThemeSwitcherProps) => {
     </AppButton>
   );
 };
-
-// export ThemeSwither;

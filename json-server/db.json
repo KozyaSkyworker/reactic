@@ -11,6 +11,11 @@
       {"id": "1", "username": "qwerty", "password": "secretpass"}
     ],
     "profile": {
-      "name": "typicode"
+      "name": "Danila",
+      "city": "Ulyanovks",
+      "country": "Russia",
+      "age": 22,
+      "currency": "RUB",
+      "username": "danilka"
     }
   }
