@@ -10,12 +10,12 @@ const container = document.getElementById('root');
 const root = createRoot(container!); // createRoot(container!) if you use TypeScript
 root.render(
   <ErrorBoundary>
-    <StoreProvider>
-      <BrowserRouter>
+    <BrowserRouter>
+      <StoreProvider>
         <ThemeProvider>
           <App />
         </ThemeProvider>
-      </BrowserRouter>
-    </StoreProvider>
+      </StoreProvider>
+    </BrowserRouter>
   </ErrorBoundary>,
 );

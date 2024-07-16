@@ -1,6 +1,11 @@
 import { StateSchema, StoreProvider } from 'app/providers/StoreProvider';
 import { ReactNode } from 'react';
+import { BrowserRouter } from 'react-router-dom';
 
 export function renderComponent(component: ReactNode, initialState: Partial<StateSchema>) {
-  return <StoreProvider initialState={initialState}>{component}</StoreProvider>;
+  return (
+    <BrowserRouter>
+      <StoreProvider initialState={initialState}>{component}</StoreProvider>
+    </BrowserRouter>
+  );
 }

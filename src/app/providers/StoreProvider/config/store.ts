@@ -3,8 +3,13 @@ import { StateSchema } from './StateSchema'
 import { counterReducer } from 'entities/Counter'
 import { userReducer } from 'entities/User'
 import { createReducerManager } from './reducerManager'
+import { apiAxiosInstance } from 'shared/api/api'
+import { To, NavigateOptions } from 'react-router-dom'
 
-export function createReduxStore(initialState?: StateSchema, asyncReducers?: ReducersMapObject<StateSchema>) {
+export function createReduxStore(initialState?: StateSchema, 
+    asyncReducers?: ReducersMapObject<StateSchema>, 
+    navigate?: (to: To, options?: NavigateOptions) => void) {
+
 
     const rootReducer: ReducersMapObject<StateSchema> ={
         ...asyncReducers,
@@ -18,6 +23,14 @@ export function createReduxStore(initialState?: StateSchema, asyncReducers?: Red
         reducer: reducerManager.reduce,
         devTools: false,
         preloadedState: initialState,
+        middleware: getDefaultMiddleware => getDefaultMiddleware({
+            thunk: {
+                extraArgument: {
+                    api: apiAxiosInstance,
+                    navigate
+                }
+            }
+        })
     })
 
     // @ts-expect-error test
