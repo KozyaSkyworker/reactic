@@ -21,7 +21,7 @@ export const loginByUsername = createAsyncThunk<IUser, LoginByUsernameProps, { r
             localStorage.setItem(LOCAL_STORAGE_USER_KEY, JSON.stringify(response.data))
             thunkAPI.dispatch(userActions.setAuthData(response.data))
 
-            thunkAPI.extra.navigate('/profile')
+            // thunkAPI.extra.navigate('/profile')
 
             return response.data
 

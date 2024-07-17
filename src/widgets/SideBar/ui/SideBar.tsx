@@ -15,6 +15,8 @@ export const SideBar = memo(() => {
   const dispatch = useDispatch();
   const authData = useSelector(getUserAuthData);
 
+  console.log(authData);
+
   const [isSidebarOpen, setSidebarOpen] = useState(false);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
