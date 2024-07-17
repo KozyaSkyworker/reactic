@@ -5,43 +5,36 @@ import { classNames } from 'shared/lib/classNames/classNames';
 type HTMLInput = Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange'>;
 
 interface AppInputProps extends HTMLInput {
-  value?: string;
+  value?: string | number;
   onChange?: (value: string) => void;
   foreignClasses?: string;
 }
 
-const AppInput = memo(
-  ({
-    value,
-    onChange,
-    type = 'text',
-    foreignClasses = '',
-    autoFocus,
-    ...otherProps
-  }: AppInputProps) => {
-    const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-      onChange?.(e.target.value);
-    };
+const AppInput = memo((props: AppInputProps) => {
+  const { value, onChange, type = 'text', foreignClasses = '', autoFocus, ...otherProps } = props;
 
-    const inputRef = useRef<HTMLInputElement>(null);
+  const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    onChange?.(e.target.value);
+  };
 
-    useEffect(() => {
-      if (autoFocus) {
-        inputRef.current?.focus();
-      }
-    }, [autoFocus]);
+  const inputRef = useRef<HTMLInputElement>(null);
 
-    return (
-      <input
-        ref={inputRef}
-        className={classNames(classes.inpt, {}, [foreignClasses])}
-        type={type}
-        value={value}
-        onChange={onChangeHandler}
-        {...otherProps}
-      />
-    );
-  },
-);
+  useEffect(() => {
+    if (autoFocus) {
+      inputRef.current?.focus();
+    }
+  }, [autoFocus]);
+
+  return (
+    <input
+      ref={inputRef}
+      className={classNames(classes.inpt, {}, [foreignClasses])}
+      type={type}
+      value={value}
+      onChange={onChangeHandler}
+      {...otherProps}
+    />
+  );
+});
 
 export default AppInput;

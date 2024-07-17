@@ -64,7 +64,6 @@ const LoginForm = ({ onSuccess }: LoginFormProps) => {
           <AppInput
             autoFocus={true}
             placeholder="username"
-            type="text"
             foreignClasses={classNames(classes.loginform__inpt)}
             value={username}
             onChange={onChangeUsername}
