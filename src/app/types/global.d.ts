@@ -15,5 +15,9 @@ declare module "*.svg" {
   export default content;
 }
 
+type DeepPartial<T> = T extends object ? {
+  [P in keyof T]?: DeepPartial<T[P]>;
+} : T;
+
 // declare module "*.module.css";
 // declare module "*.module.scss";

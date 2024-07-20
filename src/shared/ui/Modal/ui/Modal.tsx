@@ -23,7 +23,7 @@ export const Modal = ({ children, isOpen, onClose, isLazy }: IModal) => {
   const keyDownHandler = useCallback(
     (e: KeyboardEvent) => {
       if (e.key == 'Escape') {
-        onClose();
+        onClose?.();
       }
     },
     [onClose],

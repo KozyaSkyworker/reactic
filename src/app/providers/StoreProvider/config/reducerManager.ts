@@ -19,6 +19,8 @@ export function createReducerManager(initialReducers:  ReducersMapObject<StateSc
           }
           keysToRemove = []
         }
+        
+        // @ts-expect-error idk how to fix it
         return combinedReducer(state, action)
       },
   

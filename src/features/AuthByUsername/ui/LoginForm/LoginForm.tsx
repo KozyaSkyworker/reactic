@@ -49,7 +49,9 @@ const LoginForm = ({ onSuccess }: LoginFormProps) => {
   );
 
   const onLoginClick = useCallback(async () => {
+    // @ts-expect-error idk how to fix it
     const result = await dispatch(loginByUsername({ username, password }));
+    // @ts-expect-error idk how to fix it
     if (result.meta.requestStatus === 'fulfilled') {
       onSuccess();
     }

@@ -15,7 +15,13 @@ interface AppButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const AppButton = memo((props: AppButtonProps) => {
-  const { children, theme, disabled, foreignClasses = '', ...otherButtonProps } = props;
+  const {
+    children,
+    theme = ThemeButton.OUTLINE,
+    disabled,
+    foreignClasses = '',
+    ...otherButtonProps
+  } = props;
 
   return (
     <button

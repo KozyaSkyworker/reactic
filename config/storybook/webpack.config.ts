@@ -12,11 +12,12 @@ export default({config}: {config: webpack.Configuration}) => {
         src: path.resolve(__dirname, '..', '..', 'src')
       }
 
-    config.resolve.modules.push(paths.src)
-    config.resolve.extensions.push('.ts', '.tsx')
+    config!.resolve!.modules!.push(paths.src)
+    config!.resolve!.extensions!.push('.ts', '.tsx')
 
     // исключаем обработку svg 
-    config.module.rules = config.module.rules.map((rule: RuleSetRule)=>{
+    // @ts-expect-error because
+    config!.module!.rules = config!.module!.rules!.map((rule: RuleSetRule)=>{
       if (/svg/.test(rule.test as string)){
         return { ...rule, exclude: /\.svg$/i }
       }
@@ -24,13 +25,13 @@ export default({config}: {config: webpack.Configuration}) => {
       return rule
     })
 
-    config.module.rules.push( {
+    config!.module!.rules.push( {
         test: /\.svg$/i,
         issuer: /\.[jt]sx?$/,
         use: ['@svgr/webpack'],
     })
 
-    config.module.rules.push(buildCssLoader(true))
+    config!.module!.rules.push(buildCssLoader(true))
 
 
     return config

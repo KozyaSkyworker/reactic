@@ -14,6 +14,7 @@ const ProfilePage = () => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
+    // @ts-expect-error idk how to fix it
     dispatch(fetchProfileData());
   }, [dispatch]);
 

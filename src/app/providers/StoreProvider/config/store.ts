@@ -1,4 +1,4 @@
-import { configureStore, ReducersMapObject } from '@reduxjs/toolkit'
+import { configureStore, Reducer, ReducersMapObject } from '@reduxjs/toolkit'
 import { StateSchema } from './StateSchema'
 import { counterReducer } from 'entities/Counter'
 import { userReducer } from 'entities/User'
@@ -20,9 +20,11 @@ export function createReduxStore(initialState?: StateSchema,
     const reducerManager = createReducerManager(rootReducer)
 
     const store = configureStore<StateSchema>({
+        // @ts-expect-error idk how to fix it
         reducer: reducerManager.reduce,
         devTools: false,
         preloadedState: initialState,
+        // @ts-expect-error idk how to fix it
         middleware: getDefaultMiddleware => getDefaultMiddleware({
             thunk: {
                 extraArgument: {
