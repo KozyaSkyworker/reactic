@@ -3,6 +3,7 @@ import pluginJs from '@eslint/js';
 import tseslint from 'typescript-eslint';
 import pluginReactConfig from 'eslint-plugin-react/configs/recommended.js';
 import { fixupConfigRules } from '@eslint/compat';
+import hooksPlugin from 'eslint-plugin-react-hooks';
 
 /** @type {import('eslint').Linter.FlatConfig[]} */
 export default [
@@ -19,6 +20,16 @@ export default [
       react: {
         version: 'detect',
       },
+    },
+  },
+
+  {
+    plugins: {
+      'react-hooks': hooksPlugin,
+    },
+    rules: {
+      'react-hooks/rules-of-hooks': 2,
+      'react-hooks/exhaustive-deps': 2,
     },
   },
 

@@ -55,7 +55,7 @@ const LoginForm = ({ onSuccess }: LoginFormProps) => {
     if (result.meta.requestStatus === 'fulfilled') {
       onSuccess();
     }
-  }, [dispatch, password, username]);
+  }, [dispatch, password, username, onSuccess]);
 
   return (
     <DynamicModuleLoader reducers={initialReducers} removeAfterUnmount={true}>

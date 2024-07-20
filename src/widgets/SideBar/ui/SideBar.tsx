@@ -15,9 +15,9 @@ export const SideBar = memo(() => {
   const dispatch = useDispatch();
   const authData = useSelector(getUserAuthData);
 
-  console.log(authData);
-
-  const [isSidebarOpen, setSidebarOpen] = useState(false);
+  const [isSidebarOpen, setSidebarOpen] = useState(
+    localStorage.getItem('LOCAL_STORAGE_SIDEBAR_OPEN') ? true : false,
+  );
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -30,8 +30,12 @@ export const SideBar = memo(() => {
   }, []);
 
   const sidebarToggle = useCallback(() => {
+    isSidebarOpen
+      ? localStorage.removeItem('LOCAL_STORAGE_SIDEBAR_OPEN')
+      : localStorage.setItem('LOCAL_STORAGE_SIDEBAR_OPEN', 'true');
+
     setSidebarOpen((prev) => !prev);
-  }, []);
+  }, [isSidebarOpen]);
 
   const onLogout = useCallback(() => {
     dispatch(userActions.logout());
