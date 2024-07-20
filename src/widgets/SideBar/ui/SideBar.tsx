@@ -64,7 +64,7 @@ export const SideBar = memo(() => {
         theme={ThemeButton.ROUNDED}>
         {isSidebarOpen ? '<' : '>'}
       </AppButton>
-      {!authData && (
+      {isModalOpen && (
         <Portal>
           <LoginModal isOpen={isModalOpen} onClose={onCloseModal} />
         </Portal>
