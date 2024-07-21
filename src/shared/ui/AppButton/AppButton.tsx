@@ -5,6 +5,7 @@ import classes from './appbutton.module.scss';
 export enum ThemeButton {
   CLEAR = 'clear',
   OUTLINE = 'outline',
+  OUTLINE_HOVER = 'outline_hover',
   ROUNDED = 'rounded',
 }
 

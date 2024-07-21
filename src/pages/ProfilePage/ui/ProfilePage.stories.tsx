@@ -18,7 +18,7 @@ export const Light: Story = {
   args: {},
   decorators: [
     (Story) => (
-      <StoreProvider initialState={{ profile: { isLoading: false, readonly: true } }}>
+      <StoreProvider initialState={{ profile: { isLoading: false, isEditDisabled: true } }}>
         <Story />
       </StoreProvider>
     ),
@@ -30,7 +30,7 @@ export const Dark: Story = {
   decorators: [
     (Story) => (
       <div className={`app ${Theme.DARK}`}>
-        <StoreProvider initialState={{ profile: { isLoading: false, readonly: true } }}>
+        <StoreProvider initialState={{ profile: { isLoading: false, isEditDisabled: true } }}>
           <Story />
         </StoreProvider>
       </div>

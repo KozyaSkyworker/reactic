@@ -1,19 +1,33 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { IProfile, ProfileSchema,  } from '../types/profile'
 import { fetchProfileData } from '../services/fetchProfileData/fetchProfileData'
+import { updateProfileData } from '../services/updateProfileData/updateProfileData'
 
 const initialState: ProfileSchema = {
     isLoading: false,
-    readonly: true,
     error: undefined,
-    data: undefined
+    data: undefined,
+    formData: undefined,
+    isEditDisabled: true
 }
 
 export const profileSlice = createSlice({
   name: 'profile',
   initialState,
   reducers: {
-    
+    enableInputsEdit: (state, action: PayloadAction<boolean>) => {
+      state.isEditDisabled = action.payload
+    },
+    cancelInputsEdit: (state, action: PayloadAction<boolean>) => {
+      state.isEditDisabled = action.payload
+      state.formData = state.data
+    },
+    updateData: (state, action: PayloadAction<IProfile>) => {
+      state.formData = {
+        ...state.formData,
+        ...action.payload,
+      }
+    }
   },
   extraReducers: (builder) => {
     builder.addCase(fetchProfileData.pending, (state) => {
@@ -23,11 +37,26 @@ export const profileSlice = createSlice({
     builder.addCase(fetchProfileData.fulfilled, (state, action: PayloadAction<IProfile>) => {
       state.isLoading = false
       state.data = action.payload
+      state.formData = action.payload;
     })
     builder.addCase(fetchProfileData.rejected, (state, action) => {
       state.isLoading = false
       state.error = action.payload
-
+    })
+    // 
+    builder.addCase(updateProfileData.pending, (state) => {
+      state.error = undefined,
+      state.isLoading = true
+    })
+    builder.addCase(updateProfileData.fulfilled, (state, action: PayloadAction<IProfile>) => {
+      state.isLoading = false
+      state.data = action.payload
+      state.formData = action.payload;
+      state.isEditDisabled = true;
+    })
+    builder.addCase(updateProfileData.rejected, (state, action) => {
+      state.isLoading = false
+      state.error = action.payload
     })
    
   },

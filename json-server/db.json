@@ -1,21 +1,42 @@
 {
-    "posts": [
-      { "id": "1", "title": "a title", "views": 100 },
-      { "id": "2", "title": "another title", "views": 200 }
-    ],
-    "comments": [
-      { "id": "1", "text": "a comment about post 1", "postId": "1" },
-      { "id": "2", "text": "another comment about post 1", "postId": "1" }
-    ],
-    "users": [
-      {"id": "1", "username": "qwerty", "password": "secretpass"}
-    ],
-    "profile": {
-      "name": "Danila",
-      "city": "Ulyanovks",
-      "country": "Russia",
-      "age": 22,
-      "currency": "RUB",
-      "username": "danilka"
+  "posts": [
+    {
+      "id": "1",
+      "title": "a title",
+      "views": 100
+    },
+    {
+      "id": "2",
+      "title": "another title",
+      "views": 200
     }
+  ],
+  "comments": [
+    {
+      "id": "1",
+      "text": "a comment about post 1",
+      "postId": "1"
+    },
+    {
+      "id": "2",
+      "text": "another comment about post 1",
+      "postId": "1"
+    }
+  ],
+  "users": [
+    {
+      "id": "1",
+      "username": "qwerty",
+      "password": "secretpass"
+    }
+  ],
+  "profile": {
+    "name": "Danila2",
+    "city": "Ulyanovsk",
+    "country": "Russia22",
+    "age": "22",
+    "currency": "RUB",
+    "username": "danilka",
+    "avatar": "https://images.unsplash.com/photo-1583052894815-0f3e110c853a?fm=jpg&w=3000&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mnx8fGVufDB8fHx8fA%3D%3D"
   }
+}

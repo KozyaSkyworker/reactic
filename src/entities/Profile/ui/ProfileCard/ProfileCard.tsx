@@ -1,23 +1,70 @@
-import { getProfileError } from '../../model/selectors/getProfileError/getProfileError';
-import { getProfileData } from '../../model/selectors/getProfileData/getProfileData';
-import { useSelector } from 'react-redux';
-import { getProfileIsLoading } from '../../model/selectors/getProfileIsLoading/getProfileIsLoading';
 import { classNames } from 'shared/lib/classNames/classNames';
 
 import classes from './profilecard.module.scss';
 import AppInput from 'shared/ui/AppInput/AppInput';
+import { IProfile } from 'entities/Profile/model/types/profile';
 
-export const ProfileCard = () => {
-  const data = useSelector(getProfileData);
-  const error = useSelector(getProfileError);
-  const isLoading = useSelector(getProfileIsLoading);
+interface ProfileCardProps {
+  data?: IProfile;
+  isLoading?: boolean;
+  error?: string;
+  onChangeName: (value?: string) => void;
+  onChangeAge: (value?: number) => void;
+  onChangeCountry: (value?: string) => void;
+  onChangeCity: (value?: string) => void;
+  onChangeAvatar: (value?: string) => void;
+  isEditDisabled?: boolean;
+}
+
+export const ProfileCard = (props: ProfileCardProps) => {
+  const {
+    data,
+    isLoading,
+    error,
+    onChangeName,
+    onChangeAge,
+    onChangeCountry,
+    onChangeCity,
+    onChangeAvatar,
+    isEditDisabled,
+  } = props;
 
   return (
-    <div className={classNames(classes.profilecard)}>
-      <AppInput value={data?.name} />
-      <AppInput value={data?.age} type="number" />
-      <AppInput value={data?.country} />
-      <AppInput value={data?.city} />
+    <div
+      className={classNames(classes.profilecard, { [classes.profilecard_loading]: isLoading }, [])}>
+      {isLoading ? (
+        <p>Loading...</p>
+      ) : (
+        <div className={classNames(classes.profilecard__content)}>
+          <div className={classNames(classes.profilecard__inputs)}>
+            <div className={classNames(classes.profilecard__left)}>
+              <AppInput value={data?.name} onChange={onChangeName} disabled={isEditDisabled} />
+              <AppInput
+                value={data?.age}
+                type="number"
+                onChange={onChangeAge}
+                disabled={isEditDisabled}
+              />
+              <AppInput
+                value={data?.country}
+                onChange={onChangeCountry}
+                disabled={isEditDisabled}
+              />
+              <AppInput value={data?.city} onChange={onChangeCity} disabled={isEditDisabled} />
+            </div>
+            <div className={classNames(classes.profilecard__avatar)}>
+              {/* <div className={classNames(classes.profilecard__skeleton)}></div> */}
+              <img className={classNames(classes.profilecard__img)} src={data?.avatar} alt="" />
+            </div>
+          </div>
+          <AppInput
+            foreignClasses={classNames(classes.profilecard__avatarinput)}
+            value={data?.avatar}
+            onChange={onChangeAvatar}
+            disabled={isEditDisabled}
+          />
+        </div>
+      )}
     </div>
   );
 };

@@ -55,3 +55,13 @@ server.use(router);
 server.listen(8000, () => {
   console.log('server is running on 8000 port');
 });
+
+// "profile": {
+//     "name": "Danila",
+//     "city": "Ulyanovsk",
+//     "country": "Russia",
+//     "age": "22",
+//     "currency": "RUB",
+//     "username": "danilka",
+//     "avatar": "https://i.pinimg.com/474x/97/68/7a/97687a310b2d76aeb10cb70e09882405.jpg"
+//   }

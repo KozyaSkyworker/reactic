@@ -1,17 +1,19 @@
 import { Country, Currency } from "shared/const/common";
 
 export interface IProfile {
-    name: string,
-    city: string,
-    country: Country,
-    age: number,
-    currency: Currency,
-    username: string
+    name?: string,
+    city?: string,
+    country?: string,
+    age?: number,
+    currency?: Currency,
+    username?: string,
+    avatar?: string
 }
 
 export interface ProfileSchema {
     data?: IProfile,
     isLoading: boolean,
     error?: string,
-    readonly: boolean
+    isEditDisabled: boolean,
+    formData?: IProfile
 }

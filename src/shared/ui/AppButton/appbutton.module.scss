@@ -12,9 +12,19 @@
     outline: none;
 }
 
-.outline{
+.outline,
+.outline_hover{
     border: 2px solid var(--primary-color);
     background: transparent;
+}
+
+.outline_hover{
+    transition: all .3s ease;
+}
+
+.outline_hover:hover{
+    color: white;
+    background-color: var(--primary-color);
 }
 
 .rounded{

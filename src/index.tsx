@@ -9,13 +9,13 @@ import { StoreProvider } from 'app/providers/StoreProvider';
 const container = document.getElementById('root');
 const root = createRoot(container!); // createRoot(container!) if you use TypeScript
 root.render(
-  <ErrorBoundary>
-    <BrowserRouter>
-      <StoreProvider>
+  <BrowserRouter>
+    <StoreProvider>
+      <ErrorBoundary>
         <ThemeProvider>
           <App />
         </ThemeProvider>
-      </StoreProvider>
-    </BrowserRouter>
-  </ErrorBoundary>,
+      </ErrorBoundary>
+    </StoreProvider>
+  </BrowserRouter>,
 );

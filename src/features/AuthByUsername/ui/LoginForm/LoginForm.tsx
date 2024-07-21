@@ -79,7 +79,7 @@ const LoginForm = ({ onSuccess }: LoginFormProps) => {
           />
           <AppButton
             foreignClasses={classNames(classes.loginform__btn)}
-            theme={ThemeButton.OUTLINE}
+            theme={ThemeButton.OUTLINE_HOVER}
             onClick={onLoginClick}
             disabled={isLoading}>
             Войти
