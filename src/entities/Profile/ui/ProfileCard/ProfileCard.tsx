@@ -3,17 +3,22 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import classes from './profilecard.module.scss';
 import AppInput from 'shared/ui/AppInput/AppInput';
 import { IProfile } from 'entities/Profile/model/types/profile';
+import { AppSelect } from 'shared/ui/AppSelect';
+import { SelectOption } from 'shared/ui/AppSelect/ui/AppSelect';
+import { Currency } from 'shared/const/common';
 
 interface ProfileCardProps {
   data?: IProfile;
   isLoading?: boolean;
   error?: string;
   onChangeName: (value?: string) => void;
-  onChangeAge: (value?: number) => void;
+  onChangeAge: (value?: string) => void;
   onChangeCountry: (value?: string) => void;
   onChangeCity: (value?: string) => void;
   onChangeAvatar: (value?: string) => void;
   isEditDisabled?: boolean;
+  onChangeCurrency: (value?: Currency) => void;
+  currencySelectOptions: SelectOption[];
 }
 
 export const ProfileCard = (props: ProfileCardProps) => {
@@ -27,6 +32,8 @@ export const ProfileCard = (props: ProfileCardProps) => {
     onChangeCity,
     onChangeAvatar,
     isEditDisabled,
+    onChangeCurrency,
+    currencySelectOptions,
   } = props;
 
   return (
@@ -63,6 +70,15 @@ export const ProfileCard = (props: ProfileCardProps) => {
             onChange={onChangeAvatar}
             disabled={isEditDisabled}
           />
+          <label className={classNames(classes.profilecard__select__wrapper)}>
+            Предпочитаемая валюта
+            <AppSelect
+              value={data?.currency}
+              options={currencySelectOptions}
+              onChange={onChangeCurrency}
+              disabled={isEditDisabled}
+            />
+          </label>
         </div>
       )}
     </div>

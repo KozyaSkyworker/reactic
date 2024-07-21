@@ -43,4 +43,13 @@
     &_loading{
         opacity: .5;
     }
+
+    &__select__wrapper{
+        font-size: 1.2rem;
+        color: var(--inverted-text-color);
+        margin-top: 1rem;
+        display: block;
+    }
+    
+    
 }

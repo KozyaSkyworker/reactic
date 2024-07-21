@@ -19,10 +19,17 @@ import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import AppButton, { ThemeButton } from 'shared/ui/AppButton/AppButton';
 
 import classes from './profilepage.module.scss';
+import { Currency } from 'shared/const/common';
 
 const reducers: ReducresList = {
   profile: profileReducer,
 };
+
+const currencySelectOptions = [
+  { value: Currency.RUB, text: Currency.RUB },
+  { value: Currency.EUR, text: Currency.EUR },
+  { value: Currency.UDS, text: Currency.UDS },
+];
 
 const ProfilePage = () => {
   const dispatch = useAppDispatch();
@@ -45,8 +52,8 @@ const ProfilePage = () => {
   );
 
   const onChangeAge = useCallback(
-    (value?: number) => {
-      dispatch(profileActions.updateData({ age: value || 18 }));
+    (value?: string) => {
+      dispatch(profileActions.updateData({ age: value || '' }));
     },
     [dispatch],
   );
@@ -72,7 +79,13 @@ const ProfilePage = () => {
     [dispatch],
   );
 
-  // currency
+  const onChangeCurrency = useCallback(
+    (value?: Currency) => {
+      dispatch(profileActions.updateData({ currency: value }));
+    },
+    [dispatch],
+  );
+
   // username
 
   const editBtnHandler = useCallback(() => {
@@ -102,6 +115,8 @@ const ProfilePage = () => {
           onChangeCity={onChangeCity}
           onChangeAvatar={onChangeAvatar}
           isEditDisabled={isEditDisabled}
+          onChangeCurrency={onChangeCurrency}
+          currencySelectOptions={currencySelectOptions}
         />
 
         {isEditDisabled ? (

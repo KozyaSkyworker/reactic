@@ -4,7 +4,7 @@ export interface IProfile {
     name?: string,
     city?: string,
     country?: string,
-    age?: number,
+    age?: string,
     currency?: Currency,
     username?: string,
     avatar?: string
