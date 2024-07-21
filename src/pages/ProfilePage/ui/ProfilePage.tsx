@@ -4,6 +4,7 @@ import {
   getProfileFormData,
   getProfileIsEditDisabled,
   getProfileIsLoading,
+  getProfileValidateErrors,
   profileActions,
   ProfileCard,
   profileReducer,
@@ -43,6 +44,7 @@ const ProfilePage = () => {
   const error = useSelector(getProfileError);
   const isLoading = useSelector(getProfileIsLoading);
   const isEditDisabled = useSelector(getProfileIsEditDisabled);
+  const validateErrors = useSelector(getProfileValidateErrors);
 
   const onChangeName = useCallback(
     (value?: string) => {
@@ -105,6 +107,7 @@ const ProfilePage = () => {
     <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
       <div className="profilepage">
         <h1>Profile Page</h1>
+        {validateErrors?.length && validateErrors.map((err) => <p>{err}</p>)}
         <ProfileCard
           data={formData}
           isLoading={isLoading}
