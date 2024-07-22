@@ -19,5 +19,7 @@ type DeepPartial<T> = T extends object ? {
   [P in keyof T]?: DeepPartial<T[P]>;
 } : T;
 
+declare const __PROJECT__: 'storybook' | 'frontend' | 'jest'
+
 // declare module "*.module.css";
 // declare module "*.module.scss";

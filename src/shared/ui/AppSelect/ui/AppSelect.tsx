@@ -28,8 +28,6 @@ export const AppSelect = memo((props: AppSelectProps) => {
     [options],
   );
 
-  console.log(optionsList);
-
   const onChangeHandler = (e: ChangeEvent<HTMLSelectElement>) => {
     onChange?.(e.target.value as Currency);
   };

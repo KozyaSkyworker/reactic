@@ -36,8 +36,10 @@ const ProfilePage = () => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    // @ts-expect-error idk how to fix it
-    dispatch(fetchProfileData());
+    if (__PROJECT__ != 'storybook') {
+      // @ts-expect-error idk how to fix it
+      dispatch(fetchProfileData());
+    }
   }, [dispatch]);
 
   const formData = useSelector(getProfileFormData);

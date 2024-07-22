@@ -11,14 +11,14 @@ interface ProfileCardProps {
   data?: IProfile;
   isLoading?: boolean;
   error?: string;
-  onChangeName: (value?: string) => void;
-  onChangeAge: (value?: string) => void;
-  onChangeCountry: (value?: string) => void;
-  onChangeCity: (value?: string) => void;
-  onChangeAvatar: (value?: string) => void;
+  onChangeName?: (value?: string) => void;
+  onChangeAge?: (value?: string) => void;
+  onChangeCountry?: (value?: string) => void;
+  onChangeCity?: (value?: string) => void;
+  onChangeAvatar?: (value?: string) => void;
   isEditDisabled?: boolean;
-  onChangeCurrency: (value?: Currency) => void;
-  currencySelectOptions: SelectOption[];
+  onChangeCurrency?: (value?: Currency) => void;
+  currencySelectOptions?: SelectOption[];
 }
 
 export const ProfileCard = (props: ProfileCardProps) => {
@@ -61,7 +61,11 @@ export const ProfileCard = (props: ProfileCardProps) => {
             </div>
             <div className={classNames(classes.profilecard__avatar)}>
               {/* <div className={classNames(classes.profilecard__skeleton)}></div> */}
-              <img className={classNames(classes.profilecard__img)} src={data?.avatar} alt="" />
+              <img
+                className={classNames(classes.profilecard__img)}
+                src={data?.avatar}
+                alt="avatar"
+              />
             </div>
           </div>
           <AppInput
