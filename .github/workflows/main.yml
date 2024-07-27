@@ -21,14 +21,10 @@ jobs:
 
       - name: linting
         run: npm run lint
-	      if: always()
 
       - name: testing unit
         run: npm run test:unit
-	      if: always()
       - name: build storybook
         run: npm run storybook:build
-	      if: always()
       - name: testing ui
         run: npm run test:ui:ci
-	      if: always()
